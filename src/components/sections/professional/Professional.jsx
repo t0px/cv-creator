@@ -23,7 +23,11 @@ const Professional = ({
           <i className="fa-solid fa-briefcase w-4"></i>
           <h1 className="text-xl font-semibold z-50">Professional</h1>
         </div>
-        <i className="fa-solid fa-chevron-down"></i>
+        <i
+          className={`fa-solid fa-chevron-down ${
+            menuStates.professional ? "rotate-180" : ""
+          }`}
+        ></i>
       </div>
       <Form
         menuStates={menuStates}

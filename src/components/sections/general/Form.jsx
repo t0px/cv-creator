@@ -66,11 +66,11 @@ const Form = ({menuStates, handleSubmit, tempData, setTempData}) => {
               }
             />
           </div>
-          <input
+          {/* <input
             type="submit"
             value="Save Changes"
             className="cursor-pointer col-span-2 bg-blue-600 hover:bg-blue-500 duration-300 ease-in-out text-white rounded-sm px-4 py-1"
-          />
+          /> */}
         </div>
       </form>
     );

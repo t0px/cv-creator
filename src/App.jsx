@@ -1,7 +1,7 @@
 import './App.css'
 import Paper from './components/Paper';
 import PaperProvider, { PaperDataContext } from './context/PaperDataContext';
-import LeftSideContainer from './components/LeftSideContainer';
+import LeftSideContainer from './components/left-side/LeftSideContainer';
 
 function App() {
 
@@ -10,6 +10,7 @@ function App() {
     //TODO: create professional blocks
     //TODO: FOOTER
     // FIXME: ADD CARETS TO EACH SECTION HEADER (DONE)
+    //FIXME: KEYBOARD HANDLER FOR SAVE CHANGES NOT WORKING
 
   return (
     <PaperProvider>

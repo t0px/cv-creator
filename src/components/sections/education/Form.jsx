@@ -93,12 +93,12 @@ const handleEducationBlockSubmit = () => {
           value="Add"
           className="cursor-pointer bg-blue-600 col-start-4 self-end hover:bg-blue-500 duration-300 ease-in-out text-white rounded-sm px-4 py-1"
         />
-        <input
+        {/* <input
           onClick={(e) => handleSubmit(e)}
           type="submit"
           value="Save Changes"
           className="cursor-pointer col-span-4 bg-blue-600 hover:bg-blue-500 duration-300 ease-in-out text-white rounded-sm px-4 py-1"
-        />
+        /> */}
         {educationApps.length > 0 ? (
           <div className="rounded-sm col-span-4 flex flex-col gap-4">
             {educationApps.map((block) => (

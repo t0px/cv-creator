@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 
 import Menu from "./Menu";
 import BottomBar from "./BottomBar";
-import SaveChangesBar from "./SaveChangesBar";
-import { PaperDataContext } from "../context/PaperDataContext";
+import ToolTipBar from "./ToolTipBar";
+import { PaperDataContext } from "../../context/PaperDataContext";
 
 const LeftSideContainer = () => {
   const { paperData, setPaperData } = useContext(PaperDataContext);
@@ -18,6 +18,7 @@ const LeftSideContainer = () => {
 
   return (
     <div className="flex-col flex gap-4 flex-1">
+      <ToolTipBar handleSubmit={handleSubmit} />
       <Menu
         handleSubmit={handleSubmit}
         tempData={tempData}
@@ -25,7 +26,6 @@ const LeftSideContainer = () => {
       />
       <div className="flex gap-4">
         <BottomBar />
-        <SaveChangesBar handleSubmit={handleSubmit}/>
       </div>
     </div>
   );
