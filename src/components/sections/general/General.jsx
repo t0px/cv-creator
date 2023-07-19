@@ -16,10 +16,8 @@ const General = ({
           setMenuStates({ ...menuStates, general: !menuStates.general })
         }
       >
-        <div className="flex gap-2 items-center">
-          <span className={`w-fit ${menuStates.general ? "rotate-90" : ""}`}>
-            ▶
-          </span>
+        <div className="flex gap-4 items-center">
+          <i className="fa-solid fa-user w-4"></i>
           <h1 className="text-xl font-semibold z-50">General</h1>
         </div>
         <i className="fa-solid fa-chevron-down"></i>

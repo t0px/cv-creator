@@ -11,15 +11,19 @@ const Professional = ({
   return (
     <div className="relative flex flex-col gap-3">
       <div
-        className="flex gap-2 items-center cursor-pointer"
+        className="w-full justify-between flex cursor-pointer"
         onClick={() =>
-          setMenuStates({ ...menuStates, professional: !menuStates.professional })
+          setMenuStates({
+            ...menuStates,
+            professional: !menuStates.professional,
+          })
         }
       >
-        <span className={`w-fit ${menuStates.professional ? "rotate-90" : ""}`}>
-          ▶
-        </span>
-        <h1 className="text-xl font-semibold z-50">Professional</h1>
+        <div className="flex gap-4 items-center">
+          <i className="fa-solid fa-briefcase w-4"></i>
+          <h1 className="text-xl font-semibold z-50">Professional</h1>
+        </div>
+        <i className="fa-solid fa-chevron-down"></i>
       </div>
       <Form
         menuStates={menuStates}

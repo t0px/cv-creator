@@ -26,6 +26,7 @@ const handleEducationBlockSubmit = () => {
     ...prevEducationApps,
     educationBlock,
   ]);
+
   setEducationBlock({
     id: uuidv4(),
     school: "",
@@ -105,7 +106,7 @@ const handleEducationBlockSubmit = () => {
                 key={block.id}
                 className="relative flex justify-between items-center"
               >
-                <div className="flex justify-between flex-1 pr-4 gap-6">
+                <div className="grid grid-cols-3 flex-1 pr-4 gap-6">
                   <span
                     contentEditable={isOpenEditModal}
                     onBlur={(e) =>

@@ -1,25 +1,22 @@
 import './App.css'
-import Menu from './components/Menu'
 import Paper from './components/Paper';
-import BottomBar from './components/BottomBar';
-import PaperProvider from './context/PaperDataContext';
+import PaperProvider, { PaperDataContext } from './context/PaperDataContext';
+import LeftSideContainer from './components/LeftSideContainer';
 
 function App() {
+
     // FIXME: fix edit checkmark and pencil change
     // on all education blocks
     //TODO: create professional blocks
     //TODO: FOOTER
-    // FIXME: ADD CARETS TO EACH SECTION HEADER
+    // FIXME: ADD CARETS TO EACH SECTION HEADER (DONE)
 
   return (
     <PaperProvider>
       <div className="min-h-screen flex justify-center w-full ">
         <div className="absolute bottom-4">Made with ❤️ by Meir July 2023</div>
-        <div className="w-10/12 h-screen relative py-14 flex justify-between gap-10">
-          <div className="flex-col flex gap-4 flex-1">
-            <Menu />
-            <BottomBar />
-          </div>
+        <div className="w-9/12 h-screen relative py-14 flex justify-between gap-10">
+          <LeftSideContainer />
           <Paper />
         </div>
       </div>
