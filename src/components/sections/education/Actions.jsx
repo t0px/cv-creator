@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Actions = ({ block, educationApps, setEducationApps, isOpenEditModal, setIsOpenEditModal }) => {
   const handleDeleteBlock = () => {
-    setEducationApps(educationApps.filter((item) => !block.id === item.id));
+    setEducationApps(educationApps.filter((item) => block.id !== item.id));
   };
   const handleEditBlock = () => {
     setIsOpenEditModal((prev) => (prev = !isOpenEditModal));
@@ -10,14 +10,6 @@ const Actions = ({ block, educationApps, setEducationApps, isOpenEditModal, setI
 
   const handleConfirmEditBlock = () => {
     setIsOpenEditModal((prev) => (prev = !isOpenEditModal));
-    setEducationApps(
-      educationApps.map((item) => {
-        if (item.id === block.id) {
-          return { ...item, block };
-        }
-        return item;
-      })
-    );
   };
 
   return (

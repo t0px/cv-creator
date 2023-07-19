@@ -21,14 +21,19 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
     date: "",
   })
 
-  const handleEducationBlockSubmit = () => {
-    setEducationApps([...educationApps, educationBlock]);
-    setEducationBlock({
-      school: "",
-      study: "",
-      date: "",
-    });
-  };
+const handleEducationBlockSubmit = () => {
+  setEducationApps((prevEducationApps) => [
+    ...prevEducationApps,
+    educationBlock,
+  ]);
+  setEducationBlock({
+    id: uuidv4(),
+    school: "",
+    study: "",
+    date: "",
+  });
+};
+
 
   useEffect(() => {
     if (educationApps.length > 0 || educationApps !== null) {
@@ -114,7 +119,7 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black" : ""
+                      isOpenEditModal ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.school}
@@ -132,7 +137,7 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black" : ""
+                      isOpenEditModal ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.study}
@@ -150,7 +155,7 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black" : ""
+                      isOpenEditModal ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.date}
@@ -170,8 +175,8 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
           </div>
         ) : (
           <p className="col-span-4 flex gap-2 items-center">
-            <i className="fa-solid fa-circle-info text-blue-600"></i>Education blocks will be
-            shown here.
+            <i className="fa-solid fa-circle-info text-blue-600"></i>Education
+            blocks will be shown here.
           </p>
         )}
       </div>
