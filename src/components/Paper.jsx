@@ -6,9 +6,9 @@ const Paper = () => {
 
     return (
       <div className="h-full w-[595px] bg-white shadow-2xl rounded-sm p-16 flex flex-col gap-6">
-        <section className="flex justify-between items-end">
+        <section className="flex justify-between">
           <h1 className="text-3xl font-bold">{paperData.general.fullName}</h1>
-          <div className="flex-col gap-2">
+          <div className="flex-col gap-2 text-right">
             <p className="text-gray-600 underline text-sm">
               {paperData.general.email}
             </p>
