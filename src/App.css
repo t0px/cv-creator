@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box
+}
+
+body {
+    @apply bg-gray-400 overflow-hidden;
+    /* direction: rtl; */
+    /* implement hebrew */
+}
