@@ -27,7 +27,7 @@ const ToolTipBar = ({ handleSubmit }) => {
          <input
          onClick={(e) => handleSubmissionButton(e)}
           type="submit"
-          value="Save All"
+          value="Save Changes"
           className="cursor-pointer bg-gray-300 col-start-4 self-end hover:bg-gray-400 duration-300 ease-in-out rounded-sm px-4 py-1"
         />
       <Toaster

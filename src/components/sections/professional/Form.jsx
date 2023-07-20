@@ -153,7 +153,7 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
             {professionalApps.map((block) => (
               <div
                 key={block.id}
-                className="relative flex justify-between items-center"
+                className="relative flex justify-between items-baseline border-b pb-4"
               >
                 <div className={`grid grid-cols-3 flex-1 pr-4 gap-6`}>
                   {block.editing ? (
