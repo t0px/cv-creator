@@ -4,22 +4,14 @@ import { data } from "./data";
 export const PaperDataContext = createContext(null);
 
 const PaperProvider = ({ children }) => {
-    // useEffect(() => {
-        const savedData = localStorage.getItem("paperData") || data;
-    // })
+  const savedData = JSON.parse(localStorage.getItem("paperData")) || data;
 
-  const [paperData, setPaperData] = useState((JSON.parse(savedData)));
+  const [paperData, setPaperData] = useState(savedData);
 
-  // Save to local storage
+  // save to local storage whenever paperData changes
   useEffect(() => {
     localStorage.setItem("paperData", JSON.stringify(paperData));
   }, [paperData]);
-
-  useEffect(() => {
-    if (savedData) {
-      setPaperData(JSON.parse(savedData));
-    }
-  }, []);
 
   return (
     <PaperDataContext.Provider value={{ paperData, setPaperData }}>
