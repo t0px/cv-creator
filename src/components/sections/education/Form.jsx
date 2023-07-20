@@ -5,12 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import { Toaster, toast } from "react-hot-toast";
 
 const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
-
-  const notify = () =>
-    toast("Added new education form.", {
-      icon: <i className="fa-solid fa-graduation-cap"></i>,
-    });
-
   const { paperData, setPaperData } = useContext(PaperDataContext);
 
   const [educationBlock, setEducationBlock] = useState({
@@ -21,29 +15,33 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
     editing: false,
   });
 
-  const [educationApps, setEducationApps] = useState(paperData.educational.educationApps || []);
+  const [educationApps, setEducationApps] = useState(
+    paperData.educational.educationApps || []
+  );
   const [editedBlock, setEditedBlock] = useState({
     school: "",
     study: "",
     date: "",
-  })
-
-const handleEducationBlockSubmit = () => {
-    notify();
-  setEducationApps((prevEducationApps) => [
-    ...prevEducationApps,
-    educationBlock,
-  ]);
-
-  setEducationBlock({
-    id: uuidv4(),
-    school: "",
-    study: "",
-    date: "",
-    editing: false,
   });
-};
 
+  const handleEducationBlockSubmit = () => {
+    setEducationApps((prevEducationApps) => [
+      ...prevEducationApps,
+      educationBlock,
+    ]);
+    toast("Added new education block.", {
+      icon: <i className="fa-solid fa-graduation-cap"></i>,
+    });
+
+
+    setEducationBlock({
+      id: uuidv4(),
+      school: "",
+      study: "",
+      date: "",
+      editing: false,
+    });
+  };
 
   useEffect(() => {
     if (educationApps.length > 0 || educationApps !== null) {
@@ -71,7 +69,7 @@ const handleEducationBlockSubmit = () => {
             backgroundColor: "#2563eb",
             borderRadius: "2px",
           },
-          duration: 1000,
+          duration: 2000,
         }}
       />
       <hr className="mb-6" />
@@ -145,7 +143,7 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      block.editing ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black" : ""
                     }`}
                   >
                     {block.school}
@@ -163,7 +161,7 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      block.editing ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black" : ""
                     }`}
                   >
                     {block.study}
@@ -181,7 +179,7 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      block.editing ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black" : ""
                     }`}
                   >
                     {block.date}
