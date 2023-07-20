@@ -1,5 +1,6 @@
-import { Secondary } from "../../buttons/Button";
+import { PaperDataContext } from "../../../context/PaperDataContext";
 import Form from "./Form";
+import { useContext } from "react";
 
 const Professional = ({
   menuStates,
@@ -8,6 +9,8 @@ const Professional = ({
   tempData,
   setTempData,
 }) => {
+  const { paperData, setPaperData } = useContext(PaperDataContext);
+
   return (
     <div className="relative flex flex-col gap-3">
       <div
@@ -19,9 +22,20 @@ const Professional = ({
           })
         }
       >
-        <div className="flex gap-4 items-center">
-          <i className="fa-solid fa-briefcase w-4"></i>
-          <h1 className="text-xl font-semibold z-50">Professional</h1>
+        <div className="flex gap-4 items-baseline">
+          <i className="fa-solid fa-briefcase"></i>
+          <div>
+            <h1 className="text-xl font-semibold z-50">Professional</h1>
+            {paperData.professional.professionalApps && (
+              <div className="text-xs text-gray-500 flex gap-2">
+                {paperData.professional?.professionalApps?.map((block) => (
+                  <span key={block.id}>
+                    {block.title} - <strong>{block.company}</strong>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <i
           className={`fa-solid fa-chevron-down ${

@@ -1,5 +1,3 @@
-import { Primary } from "../buttons/Button";
-
 const BottomBar = () => {
     return (
       <div className="bg-white flex-1 p-6 shadow-2xl justify-between flex items-baseline rounded-sm">
@@ -7,7 +5,11 @@ const BottomBar = () => {
           <i className="fa-solid fa-file-export"></i>
           <span>Export Your Resume</span>
         </div>
-        <Primary text="Download" href=""/>
+        <input
+          type="button"
+          value="Download"
+          className="cursor-pointer bg-gray-300 col-start-4 self-end hover:bg-gray-400 duration-300 ease-in-out rounded-sm px-4 py-1"
+        />
       </div>
     );
 }

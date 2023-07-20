@@ -33,7 +33,6 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
       icon: <i className="fa-solid fa-graduation-cap"></i>,
     });
 
-
     setEducationBlock({
       id: uuidv4(),
       school: "",
@@ -129,61 +128,59 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
                 key={block.id}
                 className="relative flex justify-between items-center"
               >
-                <div className="grid grid-cols-3 flex-1 pr-4 gap-6">
-                  <span
-                    contentEditable={block.editing}
-                    onBlur={(e) =>
-                      setEducationApps(
-                        educationApps.map((item) => {
-                          if (item.id === block.id) {
-                            item.school = e.target.innerText;
-                          }
-                          return item;
-                        })
-                      )
-                    }
-                    className={`${
-                      block.editing ? "border-b border-black" : ""
-                    }`}
-                  >
-                    {block.school}
-                  </span>
-                  <span
-                    contentEditable={block.editing}
-                    onBlur={(e) =>
-                      setEducationApps(
-                        educationApps.map((item) => {
-                          if (item.id === block.id) {
-                            item.study = e.target.innerText;
-                          }
-                          return item;
-                        })
-                      )
-                    }
-                    className={`${
-                      block.editing ? "border-b border-black" : ""
-                    }`}
-                  >
-                    {block.study}
-                  </span>
-                  <span
-                    contentEditable={block.editing}
-                    onBlur={(e) =>
-                      setEducationApps(
-                        educationApps.map((item) => {
-                          if (item.id === block.id) {
-                            item.date = e.target.innerText;
-                          }
-                          return item;
-                        })
-                      )
-                    }
-                    className={`${
-                      block.editing ? "border-b border-black" : ""
-                    }`}
-                  >
-                    {block.date}
-                  </span>
+                <div className={`grid grid-cols-3 flex-1 pr-4 gap-6`}>
+                  {block.editing ? (
+                    <>
+                      <input
+                        className="w-fit focus:outline-none"
+                        value={block.school}
+                        onChange={(e) =>
+                          setEducationApps((prevApps) =>
+                            prevApps.map((item) => {
+                              if (item.id === block.id) {
+                                return { ...item, school: e.target.value };
+                              }
+                              return item;
+                            })
+                          )
+                        }
+                      />
+                      <input
+                        className="w-fit focus:outline-none"
+                        value={block.study}
+                        onChange={(e) =>
+                          setEducationApps((prevApps) =>
+                            prevApps.map((item) => {
+                              if (item.id === block.id) {
+                                return { ...item, study: e.target.value };
+                              }
+                              return item;
+                            })
+                          )
+                        }
+                      />
+                      <input
+                        className="w-fit focus:outline-none"
+                        value={block.date}
+                        onChange={(e) =>
+                          setEducationApps((prevApps) =>
+                            prevApps.map((item) => {
+                              if (item.id === block.id) {
+                                return { ...item, date: e.target.value };
+                              }
+                              return item;
+                            })
+                          )
+                        }
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <span>{block.school}</span>
+                      <span>{block.study}</span>
+                      <span>{block.date}</span>
+                    </>
+                  )}
                 </div>
                 <Actions
                   editedBlock={editedBlock}

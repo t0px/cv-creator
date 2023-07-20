@@ -24,12 +24,12 @@ const ToolTipBar = ({ handleSubmit }) => {
 
   return (
     <div className="bg-white p-6 shadow-2xl gap-4 flex items-center rounded-sm">
-      <input
-        onClick={(e) => handleSubmissionButton(e)}
-        type="submit"
-        value="Save All"
-        className="text-lg cursor-pointer col-span-4 bg-blue-600 hover:bg-blue-500 duration-300 ease-in-out text-white rounded-sm px-4 py-1"
-      />
+         <input
+         onClick={(e) => handleSubmissionButton(e)}
+          type="submit"
+          value="Save All"
+          className="cursor-pointer bg-gray-300 col-start-4 self-end hover:bg-gray-400 duration-300 ease-in-out rounded-sm px-4 py-1"
+        />
       <Toaster
         reverseOrder={true}
         position="bottom-right"

@@ -1,9 +1,8 @@
 // Menu.jsx
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import General from "../sections/general/General";
-import Education from "../sections/education/Education";
+import Education from "../sections/educational/Education";
 import Professional from "../sections/professional/Professional";
-import { PaperDataContext } from "../../context/PaperDataContext";
 
 const Menu = ({ handleSubmit, tempData, setTempData }) => {
 

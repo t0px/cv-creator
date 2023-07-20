@@ -1,26 +1,18 @@
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-const Actions = ({ block, educationApps, setEducationApps }) => {
+const Actions = ({ block, professionalApps, setProfessionalApps }) => {
   const handleDeleteBlock = () => {
-    setEducationApps(educationApps.filter((item) => block.id !== item.id));
+    setProfessionalApps(
+      professionalApps.filter((item) => block.id !== item.id)
+    );
     toast(`Successfully deleted ${block.study} block.`, {
       icon: <i className="fa-solid fa-trash"></i>,
     });
   };
-  const handleEditBlock = () => {
-    setEducationApps((prevApps) =>
-      prevApps.map((item) => {
-        if (item.id === block.id) {
-          return { ...item, editing: !item.editing };
-        }
-        return item;
-      })
-    );
-  };
 
-  const handleConfirmEditBlock = () => {
-    setEducationApps((prevApps) =>
+  const changeEditState = () => {
+    setProfessionalApps((prevApps) =>
       prevApps.map((item) => {
         if (item.id === block.id) {
           return { ...item, editing: !item.editing };
@@ -35,14 +27,14 @@ const Actions = ({ block, educationApps, setEducationApps }) => {
       {!block.editing ? (
         <span
           className="cursor-pointer select-none"
-          onClick={() => handleEditBlock()}
+          onClick={() => changeEditState()}
         >
           <i className="fa-solid fa-pen-to-square text-blue-600"></i>
         </span>
       ) : (
         <span
           className="cursor-pointer select-none"
-          onClick={() => handleConfirmEditBlock()}
+          onClick={() => changeEditState()}
         >
           <i className="fa-solid fa-check text-blue-600"></i>
         </span>
