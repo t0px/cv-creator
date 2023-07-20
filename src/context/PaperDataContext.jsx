@@ -4,9 +4,11 @@ import { data } from "./data";
 export const PaperDataContext = createContext(null);
 
 const PaperProvider = ({ children }) => {
-  const savedData = localStorage.getItem("paperData") || data;
-  console.log(savedData);
-  const [paperData, setPaperData] = useState(JSON.parse(savedData));
+    // useEffect(() => {
+        const savedData = localStorage.getItem("paperData") || data;
+    // })
+
+  const [paperData, setPaperData] = useState((JSON.parse(savedData)));
 
   // Save to local storage
   useEffect(() => {

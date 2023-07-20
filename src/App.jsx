@@ -15,7 +15,7 @@ function App() {
   return (
     <PaperProvider>
       <div className="min-h-screen flex justify-center w-full ">
-        <div className="absolute bottom-4">Made with ❤️ by Meir July 2023</div>
+        <div className="absolute bottom-4">Made by Meir July 2023</div>
         <div className="w-9/12 h-screen relative py-14 flex justify-between gap-10">
           <LeftSideContainer />
           <Paper />

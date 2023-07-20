@@ -2,16 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { PaperDataContext } from "../../../context/PaperDataContext";
 import Actions from "./Actions";
 import { v4 as uuidv4 } from "uuid";
+import { Toaster, toast } from "react-hot-toast";
 
 const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
+
+  const notify = () =>
+    toast("Added new education form.", {
+      icon: <i className="fa-solid fa-graduation-cap"></i>,
+    });
+
   const { paperData, setPaperData } = useContext(PaperDataContext);
-    const [isOpenEditModal, setIsOpenEditModal] = useState(false);
 
   const [educationBlock, setEducationBlock] = useState({
     id: uuidv4(),
     school: "",
     study: "",
     date: "",
+    editing: false,
   });
 
   const [educationApps, setEducationApps] = useState(paperData.educational.educationApps || []);
@@ -22,6 +29,7 @@ const Form = ({ menuStates, handleSubmit, tempData, setTempData }) => {
   })
 
 const handleEducationBlockSubmit = () => {
+    notify();
   setEducationApps((prevEducationApps) => [
     ...prevEducationApps,
     educationBlock,
@@ -32,6 +40,7 @@ const handleEducationBlockSubmit = () => {
     school: "",
     study: "",
     date: "",
+    editing: false,
   });
 };
 
@@ -52,11 +61,25 @@ const handleEducationBlockSubmit = () => {
         !menuStates.education ? "hidden" : ""
       } text-slate-700 px-6 py-6`}
     >
+      <Toaster
+        reverseOrder={true}
+        position="bottom-right"
+        gutter={-10}
+        toastOptions={{
+          style: {
+            color: "white",
+            backgroundColor: "#2563eb",
+            borderRadius: "2px",
+          },
+          duration: 1000,
+        }}
+      />
       <hr className="mb-6" />
       <div className="grid grid-cols-4 gap-4">
         <div className="flex gap-3 flex-col justify-center">
           <label className="font-medium">School Name:</label>
           <input
+            required
             value={educationBlock.school}
             type="text"
             className="rounded-sm px-4 py-1 border border-gray-300"
@@ -68,6 +91,7 @@ const handleEducationBlockSubmit = () => {
         <div className="flex gap-3 flex-col justify-center">
           <label className="font-medium">Title of Study:</label>
           <input
+            required
             value={educationBlock.study}
             type="text"
             className="rounded-sm px-4 py-1 border border-gray-300"
@@ -79,6 +103,7 @@ const handleEducationBlockSubmit = () => {
         <div className="flex gap-3 flex-col justify-center">
           <label className="font-medium">Dates of Study:</label>
           <input
+            required
             value={educationBlock.date}
             type="text"
             className="rounded-sm px-4 py-1 border border-gray-300"
@@ -108,7 +133,7 @@ const handleEducationBlockSubmit = () => {
               >
                 <div className="grid grid-cols-3 flex-1 pr-4 gap-6">
                   <span
-                    contentEditable={isOpenEditModal}
+                    contentEditable={block.editing}
                     onBlur={(e) =>
                       setEducationApps(
                         educationApps.map((item) => {
@@ -120,13 +145,13 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.school}
                   </span>
                   <span
-                    contentEditable={isOpenEditModal}
+                    contentEditable={block.editing}
                     onBlur={(e) =>
                       setEducationApps(
                         educationApps.map((item) => {
@@ -138,13 +163,13 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.study}
                   </span>
                   <span
-                    contentEditable={isOpenEditModal}
+                    contentEditable={block.editing}
                     onBlur={(e) =>
                       setEducationApps(
                         educationApps.map((item) => {
@@ -156,7 +181,7 @@ const handleEducationBlockSubmit = () => {
                       )
                     }
                     className={`${
-                      isOpenEditModal ? "border-b border-black text-center" : ""
+                      block.editing ? "border-b border-black text-center" : ""
                     }`}
                   >
                     {block.date}
@@ -168,8 +193,6 @@ const handleEducationBlockSubmit = () => {
                   block={block}
                   educationApps={educationApps}
                   setEducationApps={setEducationApps}
-                  isOpenEditModal={isOpenEditModal}
-                  setIsOpenEditModal={setIsOpenEditModal}
                 />
               </div>
             ))}

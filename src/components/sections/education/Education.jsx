@@ -1,5 +1,6 @@
-import { Secondary } from "../../buttons/Button";
+import { PaperDataContext } from "../../../context/PaperDataContext";
 import Form from "./Form";
+import { useContext } from "react";
 
 const Education = ({
   menuStates,
@@ -8,6 +9,7 @@ const Education = ({
   tempData,
   setTempData,
 }) => {
+  const { paperData, setPaperData } = useContext(PaperDataContext);
 
   return (
     <div className="relative flex flex-col gap-3">
@@ -21,11 +23,14 @@ const Education = ({
           <i className="fa-solid fa-graduation-cap w-4"></i>
           <div>
             <h1 className="text-xl font-semibold z-50">Education</h1>
-            {paperData.educational && (
-              <span className="text-xs text-gray-500">
-                ({paperData.general?.fullName}, {paperData.general?.phone},{" "}
-                {paperData.general?.email})
-              </span>
+            {paperData.educational.educationApps && (
+              <div className="text-xs text-gray-500 flex gap-2">
+                {paperData.educational?.educationApps?.map((block) => (
+                  <span key={block.id}>
+                    {block.study} - <strong>{block.school}</strong>
+                  </span>
+                ))}
+              </div>
             )}
           </div>
         </div>

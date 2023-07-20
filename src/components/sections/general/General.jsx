@@ -27,8 +27,8 @@ const General = ({
             <h1 className="text-xl font-semibold z-50">General</h1>
             {paperData.general && (
               <span className="text-xs text-gray-500">
-                ({paperData.general?.fullName}, {paperData.general?.phone},{" "}
-                {paperData.general?.email})
+                {" "}{paperData.general?.fullName}, {paperData.general?.phone},{" "}
+                {paperData.general?.email}{" "}
               </span>
             )}
           </div>

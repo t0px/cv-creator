@@ -1,20 +1,33 @@
 import { useState } from "react";
 
-const Actions = ({ block, educationApps, setEducationApps, isOpenEditModal, setIsOpenEditModal }) => {
+const Actions = ({ block, educationApps, setEducationApps }) => {
+
   const handleDeleteBlock = () => {
     setEducationApps(educationApps.filter((item) => block.id !== item.id));
   };
   const handleEditBlock = () => {
-    setIsOpenEditModal((prev) => (prev = !isOpenEditModal));
+    setEducationApps(prevApps => prevApps.map(item => {
+        if (item.id === block.id) {
+            return {...item, editing: !item.editing}
+        }
+        return item;
+    }))
   };
 
   const handleConfirmEditBlock = () => {
-    setIsOpenEditModal((prev) => (prev = !isOpenEditModal));
+        setEducationApps((prevApps) =>
+          prevApps.map((item) => {
+            if (item.id === block.id) {
+              return { ...item, editing: !item.editing };
+            }
+            return item;
+          })
+        );
   };
 
   return (
     <div className="border-l pl-4 flex gap-3">
-      {!isOpenEditModal ? (
+      {!block.editing ? (
         <span
           className="cursor-pointer select-none"
           onClick={() => handleEditBlock()}
